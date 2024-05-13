@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Terry",
+      "lastName": "Medhurst",
+      "email": "atuny0@sohu.com",
+      "phone": "+63 791 675 8914",
+      "username": "atuny0",
+      "password": "9uQFasdsadF1Lh",
+      "photo": "https: //robohash.org/Terry.png?set=set4",
+      "role": "admin",
+      "bio": "xyz",
+      "profile_status": "public"
+    },
+    {
+      "id": 2,
+      "firstName": "Tom",
+      "lastName": "Holland",
+      "email": "x@sohu.com",
+      "phone": "+63 791 675 8914",
+      "username": "pppa",
+      "password": "9uQFFasdasd1Lh",
+      "photo": "https: //robohash.org/Terry.png?set=set4",
+      "role": "user",
+      "bio": "xyz",
+      "profile_status": "public"
+    },
+    {
+      "id": 3,
+      "firstName": "Jason",
+      "lastName": "Momoha",
+      "email": "y@sohu.com",
+      "phone": "+63 791 675 8914",
+      "username": "qqqa",
+      "password": "9uQFsasdF1Lh",
+      "photo": "https: //robohash.org/Terry.png?set=set4",
+      "role": "user",
+      "bio": "xyz",
+      "profile_status": "private"
+    }
+  ]
+}
