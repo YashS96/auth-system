@@ -25,10 +25,10 @@ const options = {
 		},
 		servers: [
 			{
-				url: "localhost:8000",
+				url: "http://localhost:8000",
 			},
       {
-				url: "auth-system-tf6j.onrender.com",
+				url: "https://auth-system-tf6j.onrender.com/",
 			}
 		],
     schemes:["http", "https"]
