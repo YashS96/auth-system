@@ -131,8 +131,8 @@
  *           type: string
  *           description: profile_status
  *       example:
- *           id: atuny0
- *           profile_status: 9uQFasdsadF1Lh
+ *           id: 1
+ *           profile_status: private
  */
 
 /**
@@ -141,7 +141,12 @@
  *   schemas:
  *     UserUpdateInput:
  *       type: object
+ *       required:
+ *          - id
  *       properties:
+ *         id:
+ *           type: string
+ *           description: id of user
  *         firstName:
  *           type: string
  *           description: firstName
@@ -164,6 +169,7 @@
  *           type: string
  *           description: profile
  *       example:
+ *            id: 1
  *            firstName: TDog
  *            lastName: Medhurst
  *            email: atuny0@sohu.com

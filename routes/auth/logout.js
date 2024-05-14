@@ -8,9 +8,6 @@ import { logout } from '../../controllers/authController.js'
  *   post:
  *     summary: Logs out an already logged in User.
  *     tags: [Auth]
- *     parameters:
- *        - in: cookie
- *          name: token
  *     responses:
  *       200:
  *         description: Logs out a user

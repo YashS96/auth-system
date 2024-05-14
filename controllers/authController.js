@@ -21,7 +21,6 @@ export const login = async (req, res) => {
     }
     // Compare password hash 
     const passwordMatch = await bcrypt.compare(password, user.password);
-    console.log(user, process.env.SECRET)
     if (!passwordMatch) {
       return res.status(401).json({ message: "Invalid username or password." });
     }
@@ -85,7 +84,7 @@ export const register = async (req, res) => {
       role: "user",
       profile_status
     };
-    registerNewUser(newUser, req.app);
+    await registerNewUser(newUser, req.app);
     return res.status(200).json({ user: newUser });
   }
   catch (err) {

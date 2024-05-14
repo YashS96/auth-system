@@ -31,7 +31,7 @@ profileRouter.get('/all', getAllUserProfiles)
  * @swagger
  * /user/{:id}:
  *   get:
- *     summary: Fetchs users own data depending on Id. (only possible for logged in session)
+ *     summary: Fetch users own data depending on Id. (only possible for logged in session)
  *     tags: [Profile]
  *     parameters:
  *       - in: query
@@ -84,7 +84,7 @@ profileRouter.post('/status', setUserProfileStatus)
  * @swagger
  * /user/update:
  *   post:
- *     summary: updates user data (only possible for logged in session)
+ *     summary: Updates user data (only possible for logged in session)
  *     tags: [Profile]
  *     requestBody:
  *       required: true

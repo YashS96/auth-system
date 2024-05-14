@@ -6,7 +6,7 @@ import { register } from '../../controllers/authController.js'
  * @swagger
  * /register:
  *   post:
- *     summary: SRegisters nwe user (generates uuid and role automatically)
+ *     summary: Registers new user (generates uuid and role automatically)
  *     tags: [Auth]
  *     requestBody:
  *       required: true

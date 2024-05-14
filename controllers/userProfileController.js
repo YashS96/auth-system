@@ -40,7 +40,7 @@ export const updateUserProfile = async (req, res) => {
       username,
       role: "user"
     };
-    user = updateUserData(id, user, req.app)
+    user = await updateUserData(id, user, req.app)
     if (!user) {
       return res.status(400).json({ message: "user not in db!" })
     }
