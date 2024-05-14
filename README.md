@@ -54,6 +54,7 @@ node index.js
 Post man or Swagger UI can be used to test the apis.
 
 - The Application back-end runs on port: **localhost:8000**
+- swaggerUI -> **localhost:8000/api-docs**
 
 ## Application design
 The application is a based on a MVC architecture style.
