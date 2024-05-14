@@ -47,6 +47,9 @@ Post man or Swagger UI can be used to test the apis.
 - The Application back-end runs on port: **localhost:8000**
 
 ## Application design
+The application is a based on a MVC architecture style.
+The express server uses cluster module to make use of all the cores available in the system.
+It uses JWT tokens for session management wit a timeout of 15 mins.
 
 #### Express Server
 
