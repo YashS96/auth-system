@@ -1,8 +1,6 @@
 # auth-system
 A basic expressJS application backend with authentication and CRUD routes.
 
-Application is deployed via render on SwarrgerUI Api docs: https://auth-system-tf6j.onrender.com/api-docs/
-
 ## What is the use of this Repo
 
 This Project is a simple REST Api server (Express + NodeJS) which demonstrates the following features:]
@@ -56,7 +54,10 @@ node index.js
 Post man or Swagger UI can be used to test the apis.
 
 - The Application back-end runs on port: **localhost:8000**
-- swaggerUI -> **localhost:8000/api-docs**
+- swaggerUI: **localhost:8000/api-docs**
+
+- Application is deployed via render on SwarrgerUI Api docs: https://auth-system-tf6j.onrender.com/api-docs/
+  *bugs*: The hosted URL has a CORS issue due to swaggerUI url serve being different, advisible to test locally
 
 ## Application design
 The application is a based on a MVC architecture style.
