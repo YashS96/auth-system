@@ -12,7 +12,7 @@ import { getExisitingUser, registerNewUser } from '../models/authModel.js'
 export const login = async (req, res) => {
   try {
     if (req.cookies?.token) {
-      return res.json({ message: "user already logged in." });
+      return res.status(200).json({ message: "user already logged in." });
     }
     const { username, password } = req.body;
     const user = await getExisitingUser(username, req.app);
@@ -29,7 +29,7 @@ export const login = async (req, res) => {
     const token = jwt.sign({ id: user.id }, process.env.SECRET, { expiresIn: 15 * 60 }) // token expires in 15 mins
     res.cookie("token", token);
 
-    return res.json({ message: "Login successful.", user });
+    return res.json({ message: "Login successful." });
   }
   catch (err) {
     console.error(err)
@@ -86,7 +86,7 @@ export const register = async (req, res) => {
       profile_status
     };
     registerNewUser(newUser, req.app);
-    return res.status(200).json({ message: "User registered successfully.", user: newUser });
+    return res.status(200).json({ user: newUser });
   }
   catch (err) {
     console.error(err)

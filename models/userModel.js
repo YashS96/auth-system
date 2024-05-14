@@ -43,7 +43,7 @@ export const updateUserData = async (id, newData, app) => {
 export const getUserProfiles = async (app, admin) => {
   const { data } = await app.db;
   const { users } = data;
-  console.log(users)
+  console.log(admin, users)
   if (admin) {
     return users
   }

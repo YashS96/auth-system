@@ -8,7 +8,7 @@ import { getUser, getUserProfiles, updateUserData, setProfileStatus } from '../m
  */
 export const getUserProfile = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.query;
     const user = await getUser(id, req.app);
     if (!user) {
       return res.status(500).json({ message: "user doesnt exist" })
@@ -44,7 +44,7 @@ export const updateUserProfile = async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: "user not in db!" })
     }
-    return res.json(user);
+    return res.status(200).json(user);
   }
   catch (err) {
     console.error(err)
@@ -80,12 +80,14 @@ export const setUserProfileStatus = async (req, res) => {
 export const getAllUserProfiles = async (req, res) => {
   try {
     const { role } = req.query;
-    console.log(role, req)
     let user;
     if (role === constants.ADMIN) {
       user = await getUserProfiles(req.app, true);
     } else {
       user = await getUserProfiles(req.app);
+    }
+    if(!user) {
+      return res.status(404).json(user)
     }
     return res.status(200).json(user);
   }
