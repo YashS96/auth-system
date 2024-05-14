@@ -1,27 +1,38 @@
-import { constants } from "./constants";
+import { constants } from '../utils/constants.js'
+import { writeFileSync } from 'node:fs'
 
 /**
  * desc: db call to get user
  * @param { * } id
  * @param { * } app
  */
-export const getUser = (id, app) => (app.db.get('users').find({ id: id }).value())
+export const getUser = async (id, app) => {
+  const { data } = await app.db;
+  const { users } = data;
+  return users.find((user) => user.id.toString() === id.toString())
+
+}
 
 /**
  * desc: db call to update user data
  * @param { * } newData
  * @param { * } app
  */
-export const updateUserData = (newData, app) => {
-  let user = app.db.get('users').find({ id: newData.id });
-  if (!user.value()) {
-    throw new Error('user not found!')
+export const updateUserData = async (id, newData, app) => {
+  let user = await getUser(id, app);
+  if (!user) {
+    return null
   }
+  const { data } = await app.db;
+  let { users } = data;
+  let index = users.indexOf(user);
   user = {
     ...user,
-    newData
+    ...newData
   }
-  return user.assign(user).write();
+  users[index] = user
+  writeFileSync('utils//db.json', JSON.stringify({ users: users }))
+  return user
 }
 
 /**
@@ -29,11 +40,14 @@ export const updateUserData = (newData, app) => {
  * @param { * } app
  * @param { * } privateStatus
  */
-export const getUserProfiles = (app, admin) => {
+export const getUserProfiles = async (app, admin) => {
+  const { data } = await app.db;
+  const { users } = data;
+  console.log(users)
   if (admin) {
-    return app.db.get('users');
+    return users
   }
-  return app.db.get('users').find({ profile_status: constants.PUBLIC }).value();
+  return users.filter((user) => user.profile_status === constants.PUBLIC)
 }
 
 /**
@@ -42,13 +56,19 @@ export const getUserProfiles = (app, admin) => {
  * @param { * } status
  * @param { * } app
  */
-export const setProfileStatus = (id, status, app) => {
-  let user = getUser(id, app);
+export const setProfileStatus = async (id, status, app) => {
+  let user = await getUser(id, app);
+  if (!user) {
+    return null
+  }
+  const { data } = await app.db;
+  let { users } = data;
+  let index = users.indexOf(user);
   user = {
     ...user,
     profile_status: status
   }
-  return user.assign(newData).write();
-
-
+  users[index] = user
+  writeFileSync('utils//db.json', JSON.stringify({ users: users }))
+  return user
 }

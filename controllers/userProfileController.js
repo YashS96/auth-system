@@ -1,5 +1,5 @@
-import { constants } from './constants';
-import { getUser, getUserProfiles ,updateUserData, getProfileStatus, setProfileStatus } from '../models/userModel'
+import { constants } from '../utils/constants.js';
+import { getUser, getUserProfiles, updateUserData, setProfileStatus } from '../models/userModel.js'
 
 /**
  * desc: get individual loggedin user data
@@ -8,13 +8,16 @@ import { getUser, getUserProfiles ,updateUserData, getProfileStatus, setProfileS
  */
 export const getUserProfile = async (req, res) => {
   try {
-    const { id } = req.body;
-    const user = await getUser(id, app);
-    res.status(200).json(user);
+    const { id } = req.params;
+    const user = await getUser(id, req.app);
+    if (!user) {
+      return res.status(500).json({ message: "user doesnt exist" })
+    }
+    return res.status(200).json(user);
   }
   catch (err) {
     console.error(err)
-    res.status(500).json(err)
+    return res.status(500).json(err)
   }
 }
 
@@ -25,9 +28,9 @@ export const getUserProfile = async (req, res) => {
  */
 export const updateUserProfile = async (req, res) => {
   try {
-    const { username, id, firstName, lastName, email, bio, phone, photo, profile_status } = req.body;
-    const user = {
-      id,
+    const { username, id, firstName, lastName, email, bio, phone, photo } = req.body;
+    // not updating id, password or role, seperate update call for status is present
+    let user = {
       firstName,
       lastName,
       email,
@@ -35,15 +38,17 @@ export const updateUserProfile = async (req, res) => {
       phone,
       photo,
       username,
-      role: "user",
-      profile_status
+      role: "user"
     };
-    user = updateUserData(user, app)
-    return res.json(user.value()); 
+    user = updateUserData(id, user, req.app)
+    if (!user) {
+      return res.status(400).json({ message: "user not in db!" })
+    }
+    return res.json(user);
   }
   catch (err) {
     console.error(err)
-    res.status(500).json(err)
+    return res.status(500).json({ message: err })
   }
 }
 
@@ -55,12 +60,15 @@ export const updateUserProfile = async (req, res) => {
 export const setUserProfileStatus = async (req, res) => {
   try {
     const { id, profile_status } = req.body;
-    const user = await setProfileStatus(id, profile_status, app);
-    res.status(200).json(user);
+    const user = await setProfileStatus(id, profile_status, req.app);
+    if (!user) {
+      return res.status(400).json({ message: "user not in db!" })
+    }
+    return res.status(200).json(user);
   }
   catch (err) {
     console.error(err)
-    res.status(500).json(err)
+    return res.status(500).json(err)
   }
 }
 
@@ -71,18 +79,19 @@ export const setUserProfileStatus = async (req, res) => {
  */
 export const getAllUserProfiles = async (req, res) => {
   try {
-    const { id, role } = req.body;
+    const { role } = req.query;
+    console.log(role, req)
     let user;
     if (role === constants.ADMIN) {
-       user = await getUserProfiles(app, true);
+      user = await getUserProfiles(req.app, true);
     } else {
-       user = await getUserProfiles(app);
+      user = await getUserProfiles(req.app);
     }
-    res.status(200).json(user);
+    return res.status(200).json(user);
   }
   catch (err) {
     console.error(err)
-    res.status(500).json(err)
+    return res.status(500).json(err)
   }
 }
 

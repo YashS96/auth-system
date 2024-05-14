@@ -1,7 +1,8 @@
-import { bcrypt } from 'bcrypt'
-import { jwt } from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import { v4 as uuid } from 'uuid';
-import { getExisitingUser, registerNewUser } from '../models/authModel'
+import { getExisitingUser, registerNewUser } from '../models/authModel.js'
+// import { validations } from '../utils/validationService.js'
 
 /**
  * login user, if creds match, otherwise reject login request.
@@ -10,26 +11,29 @@ import { getExisitingUser, registerNewUser } from '../models/authModel'
  */
 export const login = async (req, res) => {
   try {
+    if (req.cookies?.token) {
+      return res.json({ message: "user already logged in." });
+    }
     const { username, password } = req.body;
     const user = await getExisitingUser(username, req.app);
     if (!user) {
-      return res.status(401).json({ message: "Invalid username or password." });
+      return res.status(401).json({ message: "Invalid username." });
     }
     // Compare password hash 
     const passwordMatch = await bcrypt.compare(password, user.password);
-
+    console.log(user, process.env.SECRET)
     if (!passwordMatch) {
       return res.status(401).json({ message: "Invalid username or password." });
     }
     delete user.password;
-    const token = jwt.sign(user.id, process.env.SECRET, { expiresIn: 10 * 60 }) // token expires in 10 mins
+    const token = jwt.sign({ id: user.id }, process.env.SECRET, { expiresIn: 15 * 60 }) // token expires in 15 mins
     res.cookie("token", token);
 
-    res.json({ message: "Login successful.", user });
+    return res.json({ message: "Login successful.", user });
   }
   catch (err) {
     console.error(err)
-    res.status(500).json(err)
+    return res.status(500).json(err)
   }
 }
 
@@ -40,12 +44,16 @@ export const login = async (req, res) => {
  */
 export const logout = async (req, res) => {
   try {
-    res.clearCookie("token");
-    res.status(200).json({ message: "Logout successful." })
+    if (!req.cookies?.token) {
+      return res.status(200).json({ message: "Already Logged out." })
+    } else {
+      res.clearCookie("token");
+      return res.status(200).json({ message: "Logout successful." })
+    }
   }
   catch (err) {
     console.error(err)
-    res.status(500).json({ message: "Logout failed." })
+    return res.status(500).json({ message: "Logout failed." })
   }
 }
 
@@ -58,7 +66,7 @@ export const register = async (req, res) => {
   try {
     const { username, password, firstName, lastName, email, bio, phone, photo, profile_status } = req.body;
     // Check if username or email is already taken 
-    const existingUser = await getExisitingUser(username);
+    const existingUser = await getExisitingUser(username, req.app);
     if (existingUser) {
       return res.status(400).json({ message: "Username or email already exists." });
     }
@@ -77,11 +85,15 @@ export const register = async (req, res) => {
       role: "user",
       profile_status
     };
-    registerNewUser(newUser);
+    registerNewUser(newUser, req.app);
     return res.status(200).json({ message: "User registered successfully.", user: newUser });
   }
   catch (err) {
     console.error(err)
-    res.status(500).json(err)
+    return res.status(500).json(err)
   }
+}
+
+export const loginOAuth = async (req, res) => {
+
 }

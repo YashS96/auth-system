@@ -1,8 +1,6 @@
-const lowdb = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-// Initialize lowdb with JSON file storage 
-const adapter = new FileSync('db.json');
-const db = lowdb(adapter);
+import { JSONFilePreset } from 'lowdb/node'
+import { readFileSync } from 'node:fs'
+
 
 /**
  * desc: db init method
@@ -10,12 +8,13 @@ const db = lowdb(adapter);
  * @param { * } res
  * @param { * } next
  */
-export const initializeDb = () => {
-    try {
-      // Initialize default data 
-      db.defaults({ users: [] }).write();
-      return db
-    } catch (err) {
-      console.log(err)
-    }
+export const initializeDb = async () => {
+  try {
+    // Initialize default data 
+    const defaultData = readFileSync('utils/db.json')
+    const db = await JSONFilePreset('db.json', JSON.parse(defaultData))
+    return db
+  } catch (err) {
+    console.log(err)
   }
+}

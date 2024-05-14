@@ -1,43 +1,69 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "firstName": "Terry",
-      "lastName": "Medhurst",
-      "email": "atuny0@sohu.com",
-      "phone": "+63 791 675 8914",
-      "username": "atuny0",
-      "password": "9uQFasdsadF1Lh",
-      "photo": "https: //robohash.org/Terry.png?set=set4",
-      "role": "admin",
-      "bio": "xyz",
-      "profile_status": "public"
-    },
-    {
-      "id": 2,
-      "firstName": "Tom",
-      "lastName": "Holland",
-      "email": "x@sohu.com",
-      "phone": "+63 791 675 8914",
-      "username": "pppa",
-      "password": "9uQFFasdasd1Lh",
-      "photo": "https: //robohash.org/Terry.png?set=set4",
-      "role": "user",
-      "bio": "xyz",
-      "profile_status": "public"
-    },
-    {
-      "id": 3,
-      "firstName": "Jason",
-      "lastName": "Momoha",
-      "email": "y@sohu.com",
-      "phone": "+63 791 675 8914",
-      "username": "qqqa",
-      "password": "9uQFsasdF1Lh",
-      "photo": "https: //robohash.org/Terry.png?set=set4",
-      "role": "user",
-      "bio": "xyz",
-      "profile_status": "private"
-    }
-  ]
+    "users": [
+        {
+            "id": 1,
+            "firstName": "TDog",
+            "lastName": "Medhurst",
+            "email": "atuny0@sohu.com",
+            "phone": "+63 791 675 8914",
+            "username": "atuny0",
+            "password": "$2b$10$urU2Tg0wMLR3vxJr8V5WeObyG3J0EdZQK063Pvivd02nr3chU4Isa",
+            "photo": "https: //robohash.org/Terry.png?set=set4",
+            "role": "user",
+            "bio": "xyz",
+            "profile_status": "private"
+        },
+        {
+            "id": 2,
+            "firstName": "Tom",
+            "lastName": "Holland",
+            "email": "x@sohu.com",
+            "phone": "+63 791 675 8914",
+            "username": "pppa",
+            "password": "$2b$10$pGsN5XuB84YPCoCnOMi4V.rIjWDYQklU4Q676VRWp3lH5Dk4b0P/q",
+            "photo": "https: //robohash.org/Terry.png?set=set4",
+            "role": "user",
+            "bio": "xyz",
+            "profile_status": "public"
+        },
+        {
+            "id": 3,
+            "firstName": "Jason",
+            "lastName": "Momoha",
+            "email": "y@sohu.com",
+            "phone": "+63 791 675 8914",
+            "username": "qqqa",
+            "password": "123",
+            "photo": "https: //robohash.org/Terry.png?set=set4",
+            "role": "user",
+            "bio": "xyz",
+            "profile_status": "private"
+        },
+        {
+            "id": "ddd3ebbe-9e4e-4671-b833-ae49279735c4",
+            "firstName": "Terry",
+            "lastName": "Medhurst",
+            "email": "atuny0@sohu.com",
+            "bio": "xyz",
+            "phone": "+63 791 675 8914",
+            "photo": "https: //robohash.org/Terry.png?set=set4",
+            "username": "aman",
+            "password": "$2b$10$l5R3gyz639.Y4h4k9pJpZOpXl9.yNYyvTdoDb.pY4KZ9zrDZxqMBi",
+            "role": "user",
+            "profile_status": "public"
+        },
+        {
+            "id": "5fc649c1-a683-43db-863b-00efed362f13",
+            "firstName": "ee",
+            "lastName": "dd",
+            "email": "atuny0@sohu.com",
+            "bio": "xyz",
+            "phone": "+63 791 675 8914",
+            "photo": "https: //robohash.org/Terry.png?set=set4",
+            "username": "amanqqweqeqrqerqe",
+            "password": "$2b$10$8K15jrA3LgD6ugORapQ0fePNC3kRu1VvQ/tDQ0o02T8Om/99/zbJm",
+            "role": "user",
+            "profile_status": "private"
+        }
+    ]
 }

@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express'
 const logoutRouter = express.Router();
-import { logout } from '../../controllers/authController'
+import { logout } from '../../controllers/authController.js'
 
 logoutRouter.post('/', logout)
 

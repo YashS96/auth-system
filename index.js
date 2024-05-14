@@ -1,18 +1,17 @@
 import express from 'express'
 import cors from 'cors'
-import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
-import cluster from 'cluster'
+import cluster from 'node:cluster'
 import os from 'os'
 import cookieParser from 'cookie-parser'
 // import routes & middlewares
-import loginRouter from './routes/auth/login';
-import registerRouter from './routes/auth/register';
-import logoutRouter from './routes/auth/logout';
-import profileRouter from './routes/user-profile/userProfile';
-import { sessionJwtAuth } from './middleware/authMiddleware';
-import { incomingRequestLog } from './middleware/loggerMiddleware';
-import { initializeDb } from './utils/dataStoreService'
+import loginRouter from './routes/auth/login.js';
+import registerRouter from './routes/auth/register.js';
+import logoutRouter from './routes/auth/logout.js';
+import profileRouter from './routes/user-profile/userProfile.js';
+import { sessionJwtAuth } from './middleware/authMiddleware.js';
+import { incomingRequestLog } from './middleware/loggerMiddleware.js';
+import { initializeDb } from './utils/dataStoreService.js'
 
 if (cluster.isPrimary) {
   const cpuCount = os.cpus().length
@@ -34,18 +33,16 @@ else {
   app.use(cookieParser()); // to set up jwt in users cookie
   app.use(cors());
   dotenv.config();
-  app.use(bodyParser.urlencoded({ extended: true })) // req.body exteded more than just string type
-  app.use(bodyParser.json({ extended: true })) //Content-Type: application/json 
+  app.use(express.json());
   app.db = db;
   app.use(incomingRequestLog);
 
-  app.use('/', loginRouter)
-  app.use('/', registerRouter)
+  app.use('/login', loginRouter)
+  app.use('/register', registerRouter)
   app.use('/logout', sessionJwtAuth, logoutRouter)
   app.use('/user', sessionJwtAuth, profileRouter)
 
-
   const port = process.env.PORT || 8000
 
-  app.listen(port, () => logger.info(`Sever running on port ${port}`))
+  app.listen(port, () => console.log(`Sever running on port ${port}`))
 }
