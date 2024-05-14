@@ -27,6 +27,9 @@ const options = {
 			{
 				url: "http://localhost:8000",
 			},
+      {
+				url: "https://auth-system-tf6j.onrender.com/",
+			}
 		],
 	},
 	apis: ["./routes/*.js", "./routes/auth/*.js", "./routes/user-profile/*.js"],
