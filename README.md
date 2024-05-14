@@ -13,7 +13,8 @@ As a user:
     - update profile related data
     - update profile status
 
-## Application Routes
+## Application Routes:
+
 <img width="1726" alt="demo" src="https://github.com/YashS96/auth-system/assets/42023098/16ed37a1-eb1a-4685-a92b-3a9927940acb">
 
 ## Prerequisites
@@ -50,6 +51,7 @@ Post man or Swagger UI can be used to test the apis.
 #### Express Server
 
 API Endpoints:
+
 POST:
  - http://localhost:8000/login/
  - http://localhost:8000/logout/
