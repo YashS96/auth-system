@@ -3,8 +3,10 @@ A basic expressJS application backend with authentication and CRUD routes.
 
 ## What is the use of this Repo
 
-This Project is a simple REST Api server (Express + NodeJS) which demonstrates the following features:
+This Project is a simple REST Api server (Express + NodeJS) which demonstrates the following features:]
+
 As a user:
+
 - register a new account.
 - login and logout features with jwt session management
 - User profile related CRUD options:
@@ -18,7 +20,9 @@ As a user:
 <img width="1726" alt="demo" src="https://github.com/YashS96/auth-system/assets/42023098/16ed37a1-eb1a-4685-a92b-3a9927940acb">
 
 ## Prerequisites
+
 ### Install Node
+
 Refer to https://nodejs.org/en/ to install nodejs
 
 ## Cloning and Running the Application in local
@@ -28,17 +32,22 @@ Refer to https://nodejs.org/en/ to install nodejs
 ```bash
  git clone https://github.com/YashS96/auth-system.git
 ```
+
 - Install all the npm dependencies. Go into the project folder and type the following command to install all npm packages
 
 ```bash
 npm install
 ```
+
 - In order to run the application Type the following command.
 - The start script runs on nodemon at the moment.
+
 ```bash
 npm run start
 ```
+
 - Node command can also be used to spin the server.
+
 ```bash
 node index.js
 ```
@@ -48,7 +57,9 @@ Post man or Swagger UI can be used to test the apis.
 
 ## Application design
 The application is a based on a MVC architecture style.
+
 The express server uses cluster module to make use of all the cores available in the system.
+
 It uses JWT tokens for session management wit a timeout of 15 mins.
 
 #### Express Server
