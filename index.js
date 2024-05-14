@@ -31,7 +31,7 @@ const options = {
 				url: "https://auth-system-tf6j.onrender.com/",
 			}
 		],
-    schemes:["http", "https"]
+    schemes:["http", "https"],
 	},
 	apis: ["./routes/*.js", "./routes/auth/*.js", "./routes/user-profile/*.js"],
 };
