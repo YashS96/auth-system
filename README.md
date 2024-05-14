@@ -56,6 +56,7 @@ POST:
  - http://localhost:8000/register/
  - http://localhost:8000/user/status
  - http://localhost:8000/user/update
+
 GET:
  - http://localhost:8000/user/all/
  - http://localhost:8000/user/{:id} 
