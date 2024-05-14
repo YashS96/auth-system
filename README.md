@@ -1,6 +1,8 @@
 # auth-system
 A basic expressJS application backend with authentication and CRUD routes.
 
+Application is deployed via render on SwarrgerUI Api docs: https://auth-system-tf6j.onrender.com/api-docs/
+
 ## What is the use of this Repo
 
 This Project is a simple REST Api server (Express + NodeJS) which demonstrates the following features:]
