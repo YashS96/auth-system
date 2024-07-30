@@ -1,6 +1,19 @@
 {
     "users": [
         {
+            "id": "12",
+            "firstName": "Yash",
+            "lastName": "Shrivastava",
+            "email": "srivastavyash7@gmail.com",
+            "phone": "+63 791 675 8914",
+            "username": "atuny0",
+            "password": "$2b$10$urU2Tg0wMLR3vxJr8V5WeObyG3J0EdZQK063Pvivd02nr3chU4Isa",
+            "photo": "https: //robohash.org/Terry.png?set=set4",
+            "role": "user",
+            "bio": "xyz",
+            "profile_status": "private"
+        },
+        {
             "id": "1",
             "firstName": "TDog",
             "lastName": "Medhurst",

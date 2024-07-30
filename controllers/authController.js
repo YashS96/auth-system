@@ -47,6 +47,8 @@ export const logout = async (req, res) => {
       return res.status(200).json({ message: "Already Logged out." })
     } else {
       res.clearCookie("token");
+      req.logout();
+      req.session.destroy();
       return res.status(200).json({ message: "Logout successful." })
     }
   }
@@ -91,8 +93,4 @@ export const register = async (req, res) => {
     console.error(err)
     return res.status(500).json(err)
   }
-}
-
-export const loginOAuth = async (req, res) => {
-
 }

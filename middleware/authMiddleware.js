@@ -12,7 +12,7 @@ export const sessionJwtAuth = (req, res, next) => {
     if (!token) {
       return res.status(500).json({message: "pls login first!"})
     }
-    const user = jwt.verify(token, process.env.SECRET); // AWS parameter store or secrets manager will also be a good choice to store secret
+    const user = jwt.verify(token, process.env.SECRET || 'key'); // AWS parameter store or secrets manager will also be a good choice to store secret
     req.user = user;
     next();
 
