@@ -63,7 +63,14 @@
   * @swagger
   * tags:
   *   name: Auth
-  *   description: Authentication actions
+  *   description: Authentication actions via Internal database managemet
+  */
+
+ /**
+  * @swagger
+  * tags:
+  *   name: OAuth2.0
+  *   description: Authentication actions via external Service Provider
   */
 
  /**

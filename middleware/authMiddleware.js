@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken'
 export const sessionJwtAuth = (req, res, next) => {
   try {
     const token = req.cookies?.token;
+    // console.log(req, req.isAuthenticated())
     if (!token) {
       return res.status(500).json({message: "pls login first!"})
     }

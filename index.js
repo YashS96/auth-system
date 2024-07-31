@@ -37,7 +37,7 @@ const options = {
     ],
     schemes: ["http", "https"],
   },
-  apis: ["./routes/*.js", "./routes/auth/*.js", "./routes/user-profile/*.js"],
+  apis: ["./routes/*.js", "./routes/auth/*.js", "./routes/user-profile/*.js", "./routes/auth/Strategies/*.js"],
 };
 
 const specs = swaggerJSDoc(options);
@@ -57,6 +57,12 @@ if (cluster.isPrimary) {
   })
 }
 else {
+  // const corsOptions = {
+  //   origin: 'http://localhost:8000', // Replace with your front-end origin
+  //   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  //   allowedHeaders: ['Content-Type', 'Authorization'],
+  //   credentials: true
+  // };
   const db = initializeDb();
   const app = express();
   app.use(cookieParser()); // to set up jwt in users cookie

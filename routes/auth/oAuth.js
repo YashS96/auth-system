@@ -6,6 +6,7 @@ const oAuthRouter = express.Router();
    * /auth/google:
    *   get:
    *     summary: Redirect to Google OAuth
+   *     tags: [OAuth2.0]
    *     description: Redirects the user to the Google OAuth consent screen
    *     responses:
    *       302:
@@ -17,7 +18,8 @@ oAuthRouter.get('/google', googleAuth);
    * @swagger
    * /auth/google/callback:
    *   get:
-   *     summary: Google OAuth callback
+   *     summary: Google OAuth callback (Not required to call, is a redirect callback)
+   *     tags: [OAuth2.0]
    *     description: Handles the Google OAuth callback and redirects to the home page
    *     responses:
    *       200:

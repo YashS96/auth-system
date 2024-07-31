@@ -5,7 +5,7 @@ import { register } from '../../controllers/authController.js'
  /**
  * @swagger
  * /register:
- *   post:
+ *   put:
  *     summary: Registers new user (generates uuid and role automatically)
  *     tags: [Auth]
  *     requestBody:
@@ -26,6 +26,6 @@ import { register } from '../../controllers/authController.js'
  *       500:
  *         description: Internal server error
  */
-registerRouter.post('/', register)
+registerRouter.put('/', register)
 
 export default registerRouter
