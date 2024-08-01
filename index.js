@@ -36,8 +36,14 @@ const options = {
       }
     ],
     schemes: ["http", "https"],
+    'x-google-endpoints': [
+      {
+        name: 'http://localhost:8000',
+        allowCors: true,
+      },
+    ],
   },
-  apis: ["./routes/*.js", "./routes/auth/*.js", "./routes/user-profile/*.js", "./routes/auth/Strategies/*.js"],
+  apis: ["./*js", "./routes/*.js", "./routes/auth/*.js", "./routes/user-profile/*.js", "./routes/auth/Strategies/*.js"],
 };
 
 const specs = swaggerJSDoc(options);
@@ -57,16 +63,16 @@ if (cluster.isPrimary) {
   })
 }
 else {
-  // const corsOptions = {
-  //   origin: 'http://localhost:8000', // Replace with your front-end origin
-  //   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  //   allowedHeaders: ['Content-Type', 'Authorization'],
-  //   credentials: true
-  // };
+  const corsOptions = {
+    origin: 'http://localhost:8000', // Replace with your front-end origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  };
   const db = initializeDb();
   const app = express();
   app.use(cookieParser()); // to set up jwt in users cookie
-  app.use(cors());
+  app.use(cors(corsOptions));
   dotenv.config();
   app.use(express.json());
   app.db = db;
