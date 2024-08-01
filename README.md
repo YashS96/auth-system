@@ -21,7 +21,7 @@ As a user:
 
 ## Application Routes:
 
-<img width="1726" alt="demo" src="https://github.com/YashS96/auth-system/assets/42023098/16ed37a1-eb1a-4685-a92b-3a9927940acb">
+<img width="1221" alt="Screenshot 2024-08-01 at 9 26 51 AM" src="https://github.com/user-attachments/assets/97f563bb-0c10-4843-8737-4f5f8b97dda9">
 
 ## Prerequisites
 
