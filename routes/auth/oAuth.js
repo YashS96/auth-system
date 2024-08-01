@@ -14,19 +14,6 @@ const oAuthRouter = express.Router();
    */
 oAuthRouter.get('/google', googleAuth);
 
- /**
-   * @swagger
-   * /auth/google/callback:
-   *   get:
-   *     summary: Google OAuth callback (Not required to call, is a redirect callback)
-   *     tags: [OAuth2.0]
-   *     description: Handles the Google OAuth callback and redirects to the home page
-   *     responses:
-   *       200:
-   *         description: Successful authentication
-   *       401:
-   *         description: Authentication failed
-   */
 oAuthRouter.get('/google/callback', googleAuthRedirectURIs);
 oAuthRouter.get('/google/success', authSuccessCallback);
 oAuthRouter.get('/google/failure', authFailureCallback);
