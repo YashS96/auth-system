@@ -84,7 +84,8 @@ PUT:
 
 GET:
  - http://localhost:8000/user/all/
- - http://localhost:8000/user/{:id} 
+ - http://localhost:8000/user/{:id}
+ - http://localhost:8000/auth/google
 
 ## Resources
 
