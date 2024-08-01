@@ -1,5 +1,5 @@
 # auth-system
-A basic expressJS application backend with authentication and CRUD routes.
+A basic expressJS application backend with authentication from an internal and external provider and CRUD routes.
 
 Application is deployed via render on SwarrgerUI Api docs: https://auth-system-tf6j.onrender.com/api-docs/
 
@@ -76,9 +76,11 @@ API Endpoints:
 POST:
  - http://localhost:8000/login/
  - http://localhost:8000/logout/
- - http://localhost:8000/register/
  - http://localhost:8000/user/status
  - http://localhost:8000/user/update
+
+PUT:
+- http://localhost:8000/register/
 
 GET:
  - http://localhost:8000/user/all/
