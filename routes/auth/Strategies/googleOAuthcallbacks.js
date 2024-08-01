@@ -2,13 +2,10 @@ import passport from 'passport'
 
 export const googleAuth = passport.authenticate('google', {
   scope:
-    ['email', 'profile']
+    ['profile', 'email']
 })
 
-export const googleAuthRedirectURIs = passport.authenticate('google', {
-    successRedirect: '/auth/google/success',
-    failureRedirect: '/auth/google/failure'
-  })
+export const passportAuthenticate = (indentityProvider) => (passport.authenticate(indentityProvider, { failureRedirect: '/auth/google/failure' }));
 
 export const authFailureCallback = (req, res) => (res.json({ message: "Failed to authenticate.." }));
 

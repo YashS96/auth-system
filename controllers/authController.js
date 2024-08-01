@@ -11,7 +11,7 @@ import { getExisitingUser, registerNewUser } from '../models/authModel.js'
  */
 export const login = async (req, res) => {
   try {
-    if (req.cookies?.token) {
+    if (req.cookies?.token || !req.isAuthenticated()) {
       return res.status(200).json({ message: "user already logged in." });
     }
     const { username, password } = req.body;
@@ -43,12 +43,13 @@ export const login = async (req, res) => {
  */
 export const logout = async (req, res) => {
   try {
-    if (!req.cookies?.token) {
+    if (!req.cookies?.token || !req.isAuthenticated()) {
       return res.status(200).json({ message: "Already Logged out." })
     } else {
       res.clearCookie("token");
       req.logout();
       req.session.destroy();
+      console.log(req.session, 'here')
       return res.status(200).json({ message: "Logout successful." })
     }
   }

@@ -1,6 +1,7 @@
 import express from 'express'
 import passport from 'passport'
 import session from 'express-session'
+import flash from 'connect-flash/lib/flash.js'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import cluster from 'node:cluster'
@@ -77,24 +78,26 @@ else {
   app.use(express.json());
   app.db = db;
   app.use(incomingRequestLog);
-  app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
-
-  //routes
-  app.use('/login', loginRouter)
-  app.use('/register', registerRouter)
-  app.use('/logout', sessionJwtAuth, logoutRouter)
-  app.use('/user', sessionJwtAuth, profileRouter)
-
+  //session based middleware setup order (express-session > pass.initialize > pass.session)
   app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Set secure to true if using HTTPS
+    cookie: { secure: false, maxAge: 1000 * 10 } // Set secure to true if using HTTPS and 10 min session
   }));
+  app.use(flash());
   app.use(passport.initialize());
   app.use(passport.session());
-  //external Identity provider auth routes
+
+  app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+
+  //routes
+  app.use('/login', loginRouter)
+  //external Identity provider auth route
   app.use('/auth', oAuthRouter);
+  app.use('/register', registerRouter)
+  app.use('/logout', sessionJwtAuth, logoutRouter)
+  app.use('/user', sessionJwtAuth, profileRouter)
 
   const port = process.env.PORT || 8000
 

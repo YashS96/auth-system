@@ -6,7 +6,7 @@
             "lastName": "Shrivastava",
             "email": "srivastavyash7@gmail.com",
             "phone": "+63 791 675 8914",
-            "username": "atuny0",
+            "username": "srivastavyash7@gmail.com",
             "password": "$2b$10$urU2Tg0wMLR3vxJr8V5WeObyG3J0EdZQK063Pvivd02nr3chU4Isa",
             "photo": "https: //robohash.org/Terry.png?set=set4",
             "role": "user",
@@ -75,6 +75,19 @@
             "photo": "https: //robohash.org/Terry.png?set=set4",
             "username": "amanqqweqeqrqerqe",
             "password": "$2b$10$8K15jrA3LgD6ugORapQ0fePNC3kRu1VvQ/tDQ0o02T8Om/99/zbJm",
+            "role": "user",
+            "profile_status": "private"
+        },
+        {
+            "id": "7f248019-acd3-452f-864e-b285df87f20f",
+            "firstName": "TDog2",
+            "lastName": "Medhurst2",
+            "email": "atuny0@sohu1.com",
+            "bio": "xyz",
+            "phone": "+63 791 675 8914",
+            "photo": "https://robohash.org/Terry.png?set=set4",
+            "username": "atuny012",
+            "password": "$2b$10$QsWCqmBpve0/VOzgWkcoLOFAiSqzVbmeaegfHwQTiAoQ4X8JBTucy",
             "role": "user",
             "profile_status": "private"
         }

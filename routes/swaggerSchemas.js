@@ -49,9 +49,9 @@
  *            id: 1
  *            firstName: TDog
  *            lastName: Medhurst
- *            email: atuny0@sohu.com
+ *            email: srivastavyash7@gmail.com@sohu.com
  *            phone: +63 791 675 8914
- *            username: atuny0
+ *            username: srivastavyash7@gmail.com
  *            password: $2b$10$urU2Tg0wMLR3vxJr8V5WeObyG3J0EdZQK063Pvivd02nr3chU4Isa
  *            photo: https://robohash.org/Terry.png?set=set4
  *            role: user
@@ -97,7 +97,7 @@
  *           type: string
  *           description: hashwd password
  *       example:
- *           username: atuny0
+ *           username: srivastavyash7@gmail.com
  *           password: 9uQFasdsadF1Lh
  */
 
@@ -179,9 +179,9 @@
  *            id: 1
  *            firstName: TDog
  *            lastName: Medhurst
- *            email: atuny0@sohu.com
+ *            email: srivastavyash7@gmail.com@sohu.com
  *            phone: +63 791 675 8914
- *            username: atuny0
+ *            username: srivastavyash7@gmail.com
  *            photo: https://robohash.org/Terry.png?set=set4
  *            bio: xyz
  *            profile_status: private
